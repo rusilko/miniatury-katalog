@@ -1,12 +1,15 @@
 MiniaturyKatalog::Application.routes.draw do
   get "pages/home"
-
   get "pages/contact"
-
   get "pages/help"
-
   get "pages/about"
-
+  
+  root :to => 'pages#home'
+  match '/home',    :to => 'pages#home'
+  match '/about',   :to => 'pages#about'
+  match '/help',    :to => 'pages#help'
+  match '/contact', :to => 'pages#contact'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
