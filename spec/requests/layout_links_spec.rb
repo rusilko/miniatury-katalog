@@ -25,4 +25,27 @@ describe "LayoutLinks" do
     get '/help'
     response.should have_selector('title', content: @base_title + "Help")
   end
+  
+  it "shoud have a Sign-up page at '/signup'" do
+    get '/signup'
+    response.should have_selector('title', content: @base_title + "User Sign-up")
+  end
+  
+  it "should have the right links which lead to expected sites" do
+    visit root_path
+    click_link "About"
+    response.should have_selector('title', content: @base_title + "About")
+    
+    click_link "Home"
+    response.should have_selector('title', content: @base_title + "Home")
+    
+    click_link "Help"
+    response.should have_selector('title', content: @base_title + "Help")
+    
+    click_link "Contact"
+    response.should have_selector('title', content: @base_title + "Contact")
+    
+    click_link "sign up!"
+    response.should have_selector('title', content: @base_title + "User Sign-up")
+  end
 end
